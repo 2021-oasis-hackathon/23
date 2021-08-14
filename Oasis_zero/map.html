@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,44 +9,50 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=twftd1zkkt"></script>
 </head>
 <body>
-<div id="map" style="width:100%;height:400px;"></div>
 
-<script>
+    <h1>NAVER MAP</h1>
+    <div id="map" style="width:100%;height:550px;"></div>
+    <script>
 
-
-
-
-
-var HOME_PATH = window.HOME_PATH || '.';
-var position = new naver.maps.LatLng(37.3595704, 127.105399);
-
-var map = new naver.maps.Map('map', {
-    center: position,
-    zoom: 15
-});
-
-var marker = new naver.maps.Marker({
-    map: map,
-    position: position,
-    icon: {
-        path: [
-            new naver.maps.Point(0, 70), new naver.maps.Point(20, 100), new naver.maps.Point(40, 70),
-            new naver.maps.Point(30, 70), new naver.maps.Point(70, 0), new naver.maps.Point(10, 70)
-        ],
-        style: "closedPath",
-        anchor: new naver.maps.Point(23, 103),
-        fillColor: '#ff0000',
-        fillOpacity: 1,
-        strokeColor: '#000000',
-        strokeStyle: 'solid',
-        strokeWeight: 3
-    }
-});
+const locations = [
+            { place:"1", lat: 35.1522386164496, lng: 126.917864313663} ,
+             {place:"2", lat: 35.146380261581, lng: 126.917941765905}, 
+              {place:"3",lat:35.1878285335957, lng:126.866886173395},
+              {place:"4",lat:35.1482413727855, lng:126.92450187791},
+              {place:"5",lat:35.1619927471741, lng:126.804679455077},
+              {place:"6",lat:35.1619981536824, lng:126.805228187216},
+              {place:"광주 광역시 서구 무진대로 904 ",lat:35.161333018182, lng:126.877131892942},
+              {place:"8",lat:35.1615691304206, lng:126.807429687136},
+              {place:"9",lat:35.1615745244168, lng:126.80797841698},
+              {place:"10",lat:35.1615799159287, lng:126.808527146969},
+              {place:"11",lat:35.1620035577062, lng:126.8057769195},
+              {place:"12",lat:35.1742758730574, lng:126.912632654666},
+              {place:"13",lat:35.1878336616321, lng:126.867435091289},
+              {place:"14",lat:35.1801093122891, lng:126.813746457951},
+              {place:"15",lat:35.133614411027, lng:126.901651642432},
+              {place:"16",lat:35.1615637339399, lng:126.806880957438},
+              {place:"17",lat:35.1579191351252, lng:126.89803273558},
+              {place:"18",lat:35.1711499978303, lng:126.866568449017},
+              {place:"19",lat:35.1927237419643, lng:126.860230033142},
+              {place:"20",lat:35.1828452292859, lng:126.817000463599},
+ 
 
 
+    ];
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(35.161333018182, 126.877131892942),
+            zoom: 13,
+            mapTypeControl: true
+        });
 
-
-
+        for (var i = 0; i < locations.length; i++) {
+                var marker = new naver.maps.Marker({
+                    map: map,
+                    title: locations[i].place,
+                    position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
+                });
+            }
+       
 
 </script>
 </body>
