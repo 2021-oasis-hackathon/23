@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src="/Users/db/Desktop/Oasis_zero/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=twftd1zkkt"></script>
+    </head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Oasis_ZERO </title>
+    
+    <div id="map" style="width:100%;height:550px;"></div>
+    
+    <script>
+
+
+var mapDiv = document.getElementById('map');
+var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(35.161333018182, 126.877131892942),
+            zoom: 13,
+            mapTypeControl: true
+});
+
+
+
+
+function CustomMarker(lat,lng,ID,address,serious,Plastic,Can){
+         var contents_html = "";
+         if(serious == 2)
+         {
+             contents_html = '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#d3cc07;color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%"onmouseover="javascript:overCrime(\''+ID+'\');" onmouseout="javascript:outCrime(\''+ID+'\');">' + '<div style="font-weight: bold; font-size:14px"> '+address+' </div>'+ '<div style="font-weight:bold; font-size:13px;margin-top:3px;display:none" id="'+ID+'">'+Plastic+'<br/>'+Can+'</div>'+'</div>';
+
+
+         }
+
+         if(serious == 3)
+         {
+             contents_html = '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#831616;color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%"onmouseover="javascript:overCrime(\''+ID+'\');" onmouseout="javascript:outCrime(\''+ID+'\');">' + '<div style="font-weight: bold; font-size:14px"> '+address+' </div>'+ '<div style="font-weight:bold; font-size:13px;margin-top:3px;display:none" id="'+ID+'">'+Plastic+'<br/>'+Can+'</div>'+'</div>';
+
+
+         }
+
+         if(serious == 1)
+         {
+             contents_html = '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#25f8b8;color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%"onmouseover="javascript:overCrime(\''+ID+'\');" onmouseout="javascript:outCrime(\''+ID+'\');">' + '<div style="font-weight: bold; font-size:14px"> '+address+' </div>'+ '<div style="font-weight:bold; font-size:13px;margin-top:3px;display:none" id="'+ID+'">'+Plastic+'<br/>'+Can+'</div>'+'</div>';
+
+
+         }
+
+
+         
+
+
+
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(lat, lng),
+    map: map,
+    title:address,
+    icon:{
+             content:contents_html,
+                 size:new naver.maps.Size(38,58),
+                 anchor:new naver.maps.Point(19,58),
+    },
+    draggable: false
+}); 
+    return marker;
+};
+       
+var marker1 = new CustomMarker(35.1522386164496, 126.917864313663,"1","광주광역시 동구 충장동",2,"플라스틱 용량:30%","캔 용량:62%");
+var marker2 = new CustomMarker(35.146380261581, 126.917941765905,"2","광주광역시 동구 서남동 79-14",1,"플라스틱 용량:45%","캔 용량:15%");
+var marker3 = new CustomMarker(35.1878285335957, 126.866886173395,"3","광주광역시 북구 동림동 ",3,"플라스틱 용량:100%","캔 용량:40%");
+var marker4 = new CustomMarker(35.1482413727855, 126.92450187791,"4","광주광역시 동구 충장동 84-6",2,"플라스틱 용량:70%","캔 용량:56%");
+var marker5 = new CustomMarker(35.1619927471741, 126.804679455077,"5","광주광역시 광산구 우산동 ",2,"플라스틱 용량:92%","캔 용량:74%");
+var marker6 = new CustomMarker(35.161333018182, 126.877131892942,"6","광주 광역시 서구 무진대로 904",2,"플라스틱 용량:84%","캔 용량:45%");
+var marker7 = new CustomMarker(35.1742758730574, 126.912632654666,"7","광주광역시 북구 중흥2동 1",1,"플라스틱 용량:41%","캔 용량:36%");
+var marker8 = new CustomMarker(35.133614411027, 126.901651642432,"8","광주광역시 남구 주월1동 ",3,"플라스틱 용량:80%","캔 용량:100%");
+var marker9 = new CustomMarker(35.1711499978303, 126.866568449017,"9","광주광역시 서구 동천동 유림로98번",2,"플라스틱 용량:75%","캔 용량:64%");
+var marker10 = new CustomMarker(35.1828452292859, 126.817000463599,"10","살광주광역시 광산구 신가동 수등로76번",2,"플라스틱 용량:80%","캔 용량:32%");
+
+
+    function overCrime(childID)
+    {
+        $("#"+childID).show();
+    }
+    function outCrime(childID)
+    {
+        $("#"+childID).hide();
+    }
+    
+    
+</script>
+</body>
+</html>
